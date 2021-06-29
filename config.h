@@ -1,77 +1,73 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int snap      = 0;       /* snap pixel */
+static const unsigned int gappih    = 15;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 15;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 15;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 15;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 10;       /* vertical padding of bar */
-static const int sidepad            = 10;       /* horizontal padding of bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_gray4, col_cyan,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-    [SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-    [SchemeInfoSel]  = { col_gray4, col_cyan,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-    [SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
-};
+static const int vertpad            = 15;       /* vertical gap above the bar */
+static const int sidepad            = 15;       /* horizontal gap on the left and right of the bar */
+static const int horizpadbar        = 15;       /* horizontal internal padding for statusbar */
+static const int vertpadbar         = 10;       /* vertical internal padding for statusbar */
+static const char *fonts[]          = { "Hurmit Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Hurmit Nerd Font:style=medium:pixelsize=16";
+
+// theme, included from ${HOME}/.cache/themes in config.mk
+#include "dwm-colors.h"
 
 /* tagging: refer to https://github.com/bakkeby/patches/wiki/tagicons */
 static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons, i.e. code that checks LENGTH(tags) */
 static char *tagicons[][NUMTAGS] = {
-	[IconsDefault]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
-	[IconsVacant]         = { NULL },
-	[IconsOccupied]       = { NULL },
+	[IconsDefault]        = { "" },
+	[IconsVacant]         = { "" },
+	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF059 ₅", "\uF059 ₆", "\uF059 ₇", "\uF086 ₈", "\uF1BC ₉" },
+    [IconsRoman]          = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
+    [IconsText]           = { "term₁", "note₂", "docs₃", "brws₄", "₅", "₆", "₇", "mesg₈", "musc₉" },
+    [IconsSubscript]      = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" },
+    [IconsDotSub]         = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" },
 };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+     * class          instance    title         tags mask     iscentered   isfloating   monitor */
+    { "floatfeh",     NULL,       NULL,         0,            1,           1,           -1 },
+    { "fzfmenu",      NULL,       NULL,         0,            1,           1,           -1 },
+    { "calendar",     NULL,       NULL,         0,            1,           1,           -1 },
+	{ "Zathura",      NULL,       NULL,         1 << 2,       0,           0,           -1 },
+	{ "qutebrowser",  NULL,       NULL,         1 << 3,       0,           0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "[M]",      monocle },
-	{ "[@]",      spiral },
-	{ "[\\]",     dwindle },
-	{ "H[]",      deck },
-	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
-	{ "HHH",      grid },
-	{ "###",      nrowgrid },
-	{ "---",      horizgrid },
-	{ ":::",      gaplessgrid },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	// symbol        arrange function
+	{ "\uF0C8",      tile },    /* first entry is default */
+	// { "",        monocle },
+	{ "\uF01E",      spiral },
+	{ "\uF0E2",      dwindle },
+	// { "H[]",      deck },
+	{ "\uF0E8",      bstack },
+	{ "\uF0C9",      bstackhoriz },
+	// { "HHH",      grid },
+	{ "\uF00A",      nrowgrid },
+	// { "---",      horizgrid },
+	// { ":::",      gaplessgrid },
+	//{ "\uF27f",      centeredmaster },
+	// { ">M>",      centeredfloatingmaster },
+	//{ "\uFA73",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
 
@@ -88,7 +84,17 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+
+static const char *dmenucmd[] = { 
+    "dmenu_run", 
+    "-m", dmenumon,
+    "-fn", dmenufont,
+    "-nb", background,
+    "-nf", foreground,
+    "-sb", selectedbg,
+    "-sf", selectedfg, 
+    NULL };
+
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
@@ -122,8 +128,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	//{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[2]} },
+	//{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[3]} },
+	//{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[6]} },
+	//{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -132,8 +141,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-//	{ MODKEY|ShiftMask,             XK_a,      seticonset,     {.i = 0 } },
-//	{ MODKEY|ShiftMask,             XK_b,      seticonset,     {.i = 1 } },
+    //{ MODKEY|ShiftMask,             XK_a,      seticonset,     {.i = 0 } },
+    //{ MODKEY|ShiftMask,             XK_b,      seticonset,     {.i = 1 } },
+	{ MODKEY,	                 	XK_q,      cyclelayout,    {.i = -1 } },
+	{ MODKEY,                       XK_a,      cyclelayout,    {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
