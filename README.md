@@ -1,4 +1,4 @@
-# Boboassa's build of dwm the dynamic window manager
+# Boboassa's build of dwm
 
 dwm is an extremely fast, small, and dynamic window manager for X.
 
@@ -16,19 +16,19 @@ the /usr/local namespace by default).
 Afterwards enter the following command to build and install dwm (if
 necessary as root):
 
-    `make clean install`
+`make clean install`
 
 
 ## Running dwm
 
 Add the following line to your .xinitrc to start dwm using startx:
 
-    `exec dwm`
+`exec dwm`
 
 In order to connect dwm to a specific display, make sure that
 the DISPLAY environment variable is set correctly, e.g.:
 
-    `DISPLAY=foo.bar:1 exec dwm`
+`DISPLAY=foo.bar:1 exec dwm`
 
 (This will start dwm on display :1 of the host foo.bar.)
 
@@ -36,11 +36,11 @@ In order to display status info in the bar, you can do something
 like this in your `.xinitrc`:
 
 ```
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec dwm
+while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
+do
+    sleep 1
+done &
+exec dwm
 ```
 
 ## Configuration
@@ -63,7 +63,7 @@ Patches are a way of adding functionality to the minimal standard build of dwm
 - Zoomswap
 
 
-## Aknowledgements
+## Acknowledgements
 
 Visit [suckless.org](https://dwm.suckless.org/) for more information on dwm
 and other suckless programs.
