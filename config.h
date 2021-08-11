@@ -17,31 +17,45 @@ static const int vertpadbar         = 10;       /* vertical internal padding for
 static const char *fonts[]          = { "Hurmit Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hurmit Nerd Font:style=medium:pixelsize=16";
 
-// theme, included from ${HOME}/.cache/themes in config.mk
-#include "dwm-colors.h"
+// theme, included from ${HOME}/.cache/themes/ in config.mk
+#include "dwm-color.h"
+
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+const char *spcmd1[] = {"st", "-n", "sp-term", "-g", "25x10", NULL };
+const char *spcmd2[] = {"st", "-n", "sp-pass", "-g", "90x25", NULL };
+const char *spcmd3[] = {"mpv", NULL };
+static Sp scratchpads[] = {
+	/* name          cmd  */
+	{"sp-term",      spcmd1},
+	{"sp-pass",      spcmd2},
+	{"mpv",       spcmd3},
+};
+
 
 /* tagging: refer to https://github.com/bakkeby/patches/wiki/tagicons */
 static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons, i.e. code that checks LENGTH(tags) */
 static char *tagicons[][NUMTAGS] = {
 	[IconsDefault]        = { "" },
-	[IconsVacant]         = { "" },
-	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF059 ₅", "\uF059 ₆", "\uF059 ₇", "\uF086 ₈", "\uF1BC ₉" },
-    [IconsRoman]          = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" },
-    [IconsText]           = { "term₁", "note₂", "docs₃", "brws₄", "₅", "₆", "₇", "mesg₈", "musc₉" },
-    [IconsSubscript]      = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" },
-    [IconsDotSub]         = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉" },
+	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
+	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
+    [IconsNumbers]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
-     * class          instance    title         tags mask     iscentered   isfloating   monitor */
-    { "floatfeh",     NULL,       NULL,         0,            1,           1,           -1 },
-    { "fzfmenu",      NULL,       NULL,         0,            1,           1,           -1 },
-    { "calendar",     NULL,       NULL,         0,            1,           1,           -1 },
-	{ "Zathura",      NULL,       NULL,         1 << 2,       0,           0,           -1 },
-	{ "qutebrowser",  NULL,       NULL,         1 << 3,       0,           0,           -1 },
+     * class          instance       title   tags mask   switchtotag iscentered isfloating  monitor */
+    { "float",        NULL,          NULL,   0,          0,          1,         1,          -1 },
+	{ "Zathura",      NULL,          NULL,   1 << 2,     1,          0,         0,          -1 },
+	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
+	{ NULL,		      "sp-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
+	{ NULL,		      "sp-pass",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
+	{ NULL,		      "mpv",         NULL,   SPTAG(2),   0,          1,         1,          -1 },
 };
 
 /* layout(s) */
@@ -54,30 +68,35 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	// symbol        arrange function
-	{ "\uF0C8",      tile },    /* first entry is default */
-	// { "",        monocle },
-	{ "\uF01E",      spiral },
-	{ "\uF0E2",      dwindle },
+	{ "\uFC61",      tile },    /* first entry is default */
+	// { "<M>",        monocle },
+	{ "\uF966",      spiral },
+	{ "\uF964",      dwindle },
 	// { "H[]",      deck },
-	{ "\uF0E8",      bstack },
-	{ "\uF0C9",      bstackhoriz },
+	{ "\uF9A9",      bstack },
+	{ "\uF85B",      bstackhoriz },
 	// { "HHH",      grid },
-	{ "\uF00A",      nrowgrid },
+	{ "\uF53A",      nrowgrid },
 	// { "---",      horizgrid },
 	// { ":::",      gaplessgrid },
-	//{ "\uF27f",      centeredmaster },
+	{ "\uFB1D",      centeredmaster },
 	// { ">M>",      centeredfloatingmaster },
 	//{ "\uFA73",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
 
-/* key definitions */
+/* key definitions MODIFIED FROM THE DEFAULT DWM BUILD
+ * Mod + [1-9]                  Add tag number to currently focussed tags       view
+ * Mod + Shift + [1-9]          Focus only the selected tag                     toggleview
+ * Mod + Ctrl  + [1-9]          Move current window to selected tag             tag
+ * Mod + Ctrl  + Shift + [1-9]  Toggle empty tags (idk what this does honestly) toggletag
+ * */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY,                       KEY,      toggleview,  {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,           KEY,      tag,         {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      view,        {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,   {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -99,7 +118,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	//{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -141,6 +160,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
+	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
+	{ MODKEY,            			XK_x,	   togglescratch,  {.ui = 2 } },
     //{ MODKEY|ShiftMask,             XK_a,      seticonset,     {.i = 0 } },
     //{ MODKEY|ShiftMask,             XK_b,      seticonset,     {.i = 1 } },
 	{ MODKEY,	                 	XK_q,      cyclelayout,    {.i = -1 } },

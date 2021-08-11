@@ -21,7 +21,7 @@ FREETYPEINC = /usr/include/freetype2
 #FREETYPEINC = ${X11INC}/freetype2
 
 # includes and libs
-INCS = -I${X11INC} -I${FREETYPEINC} -I/home/luca/.config/colors/config
+INCS = -I${X11INC} -I${FREETYPEINC} -I/home/luca/.cache/themes/
 LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} ${FREETYPELIBS} -lXrender
 
 # flags
