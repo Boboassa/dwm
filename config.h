@@ -17,7 +17,7 @@ static const int vertpadbar         = 10;       /* vertical internal padding for
 static const char *fonts[]          = { "Hurmit Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hurmit Nerd Font:style=medium:pixelsize=16";
 
-// theme, included from ${HOME}/.cache/themes/ in config.mk
+// color theme, included from ${HOME}/.cache/themes/ in config.mk
 #include "dwm-color.h"
 
 typedef struct {
@@ -39,7 +39,7 @@ static Sp scratchpads[] = {
 static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons, i.e. code that checks LENGTH(tags) */
 static char *tagicons[][NUMTAGS] = {
 	[IconsDefault]        = { "" },
-	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
 	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
 	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
     [IconsNumbers]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
@@ -101,20 +101,11 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+/* Include commands for keybindings */
+#include "commands.h"
 
-static const char *dmenucmd[] = { 
-    "dmenu_run", 
-    "-m", dmenumon,
-    "-fn", dmenufont,
-    "-nb", background,
-    "-nf", foreground,
-    "-sb", selectedbg,
-    "-sf", selectedfg, 
-    NULL };
-
-static const char *termcmd[]  = { "st", NULL };
+/* Include special function key codes */
+#include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -167,6 +158,12 @@ static Key keys[] = {
     //{ MODKEY|ShiftMask,             XK_b,      seticonset,     {.i = 1 } },
 	{ MODKEY,	                 	XK_q,      cyclelayout,    {.i = -1 } },
 	{ MODKEY,                       XK_a,      cyclelayout,    {.i = +1 } },
+/* Special function key bindings */
+	{ 0,                            XF86XK_AudioMute,             spawn,    {.v = togglemute } },
+	{ 0,                            XF86XK_AudioLowerVolume,      spawn,    {.v = voldown } },
+	{ 0,                            XF86XK_AudioRaiseVolume,      spawn,    {.v = volup } },
+	{ 0,                            XF86XK_MonBrightnessUp,       spawn,    {.v = backlightup } },
+	{ 0,                            XF86XK_MonBrightnessDown,     spawn,    {.v = backlightdown } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
