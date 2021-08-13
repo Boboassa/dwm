@@ -53,6 +53,7 @@ static const Rule rules[] = {
     { "float",        NULL,          NULL,   0,          0,          1,         1,          -1 },
 	{ "Zathura",      NULL,          NULL,   1 << 2,     1,          0,         0,          -1 },
 	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
+	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
 	{ NULL,		      "sp-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
 	{ NULL,		      "sp-pass",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
 	{ NULL,		      "mpv",         NULL,   SPTAG(2),   0,          1,         1,          -1 },
