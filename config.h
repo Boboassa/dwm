@@ -39,9 +39,9 @@ static Sp scratchpads[] = {
 static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons, i.e. code that checks LENGTH(tags) */
 static char *tagicons[][NUMTAGS] = {
 	[IconsDefault]        = { "" },
-	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
-	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
-	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF896 ₈", "\uF886 ₉" },
+	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
     [IconsNumbers]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 };
 
