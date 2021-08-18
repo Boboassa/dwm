@@ -17,7 +17,7 @@ static const int vertpadbar         = 10;       /* vertical internal padding for
 static const char *fonts[]          = { "Hurmit Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Hurmit Nerd Font:style=medium:pixelsize=16";
 
-// color theme, included from ${HOME}/.cache/themes/ in config.mk
+// color theme, included from ~/.cache/themes/ in config.mk
 #include "dwm-color.h"
 
 typedef struct {
@@ -51,9 +51,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
      * class          instance       title   tags mask   switchtotag iscentered isfloating  monitor */
     { "float",        NULL,          NULL,   0,          0,          1,         1,          -1 },
-	{ "Zathura",      NULL,          NULL,   1 << 2,     1,          0,         0,          -1 },
-	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
-	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
+	{ "Zathura",      NULL,          NULL,   1 << 2,     0,          0,         0,          -1 },
+	{ "qutebrowser",  NULL,          NULL,   1 << 3,     0,          0,         0,          -1 },
+	{ "discord",      NULL,          NULL,   1 << 7,     0,          0,         0,          -1 },
 	{ NULL,		      "sp-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
 	{ NULL,		      "sp-pass",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
 	{ NULL,		      "mpv",         NULL,   SPTAG(2),   0,          1,         1,          -1 },
@@ -157,7 +157,7 @@ static Key keys[] = {
 	{ MODKEY,            			XK_x,	   togglescratch,  {.ui = 2 } },
     //{ MODKEY|ShiftMask,             XK_a,      seticonset,     {.i = 0 } },
     //{ MODKEY|ShiftMask,             XK_b,      seticonset,     {.i = 1 } },
-	{ MODKEY,	                 	XK_q,      cyclelayout,    {.i = -1 } },
+	//{ MODKEY,	                 	XK_q,      spawn,          { test } },
 	{ MODKEY,                       XK_a,      cyclelayout,    {.i = +1 } },
 /* Special function key bindings */
 	{ 0,                            XF86XK_AudioMute,             spawn,    {.v = togglemute } },
