@@ -1,5 +1,9 @@
 /* Commands for keybindings imported and used in config.h */
 
+#define TERMINAL "st"
+#define BROWSER "qutebrowser"
+#define EDITOR "vim"
+
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 
 static const char *dmenucmd[] = {
@@ -12,7 +16,11 @@ static const char *dmenucmd[] = {
     "-sf", selectedfg,
     NULL };
 
-static const char *termcmd[]  =       { "st", NULL };
+static const char *termcmd[]  =       { TERMINAL, NULL };
+static const char *editorcmd[]  =     { TERMINAL, "-c", "editor",  NULL };
+static const char *brwsrcmd[]  =      { "qutebrowser", NULL };
+
+//static const char *test[] =           SHCMD("notify-send 'This works!' 'I said it works!'");
 
 static const char *volup[] =          { "volume", "-i", NULL };
 static const char *voldown[] =        { "volume", "-d", NULL };
