@@ -16,11 +16,13 @@ static const char *dmenucmd[] = {
     "-sf", selectedfg,
     NULL };
 
-static const char *termcmd[]  =       { TERMINAL, NULL };
-static const char *editorcmd[]  =     { TERMINAL, "-c", "editor",  NULL };
-static const char *brwsrcmd[]  =      { "qutebrowser", NULL };
+static const char *termcmd[]   = { TERMINAL, NULL };
+static const char *editorcmd[] = { TERMINAL, "-e", "editor",  NULL };
+static const char *wikicmd[]   = { TERMINAL, "-e", "vim", "-c VimwikiIndex",  NULL };
+static const char *diarycmd[]  = { TERMINAL, "-c float", "-g 85x30", "-e vwdiary", NULL };
+static const char *calcmd[]    = { TERMINAL, "-c float", "-g 85x30", "-e calcurse", NULL };
 
-//static const char *test[] =           SHCMD("notify-send 'This works!' 'I said it works!'");
+static const char *browsercmd[] = { BROWSER, NULL };
 
 static const char *volup[] =          { "volume", "-i", NULL };
 static const char *voldown[] =        { "volume", "-d", NULL };
