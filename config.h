@@ -39,7 +39,7 @@ static Sp scratchpads[] = {
 static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons, i.e. code that checks LENGTH(tags) */
 static char *tagicons[][NUMTAGS] = {
 	[IconsDefault]        = { "" },
-    /* name                    term.       docs        note        globe       circle      circle      circle      message     music
+    /* name                    term.       docs        note        globe       circle      circle      circle      message     music    */
 	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
 	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
 	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
@@ -139,12 +139,12 @@ TAGKEYS(                     XK_9,                      8)
 { MODKEY|ShiftMask,          XK_0,            tag,             {.ui = ~0 } },
 { MODKEY,                    XK_minus,        spawn,           {.v = 0 } },
 { MODKEY,                    XK_equal,        spawn,           {.v = 0 } },
-{ MODKEY,                    XK_Backspace,    spawn,           {.v = 0 } },
+{ MODKEY,                    XK_BackSpace,    spawn,           {.v = 0 } },
 
 { MODKEY,                    XK_Tab,          view,           {0} },
 { MODKEY,                    XK_q,            spawn,          {0} },
 { MODKEY|ShiftMask,          XK_q,            quit,           {0} },
-//{ MODKEY,                    XK_w,            setlayout,      {.v = &layouts[3]} },
+{ MODKEY,                    XK_w,            spawn,          {.v = wikicmd} },
 //{ MODKEY,                    XK_e,            spawn,          {.v = <++> } },
 //{ MODKEY,                    XK_r,            setlayout,      {.v = &layouts[5]} },
 { MODKEY,                    XK_t,            setlayout,      {.v = &layouts[0]} },
@@ -159,7 +159,7 @@ TAGKEYS(                     XK_9,                      8)
 
 { MODKEY,                    XK_a,            cyclelayout,    {.i = +1 } },
 //{ MODKEY|ShiftMask,          XK_a,            seticonset,     {.i = 0 } },
-//{ MODKEY,                    XK_s,            spawn,          {.v = <++> } },
+{ MODKEY,                    XK_s,            spawn,          {.v = browsercmd } },
 { MODKEY,                    XK_d,            incnmaster,     {.i = -1 } },
 //{ MODKEY,                    XK_f,            setlayout,      {.v = &layouts[1]} },
 //{ MODKEY,                    XK_g,            setlayout,      {.v = &layouts[2]} },
@@ -175,11 +175,12 @@ TAGKEYS(                     XK_9,                      8)
 
 //{ MODKEY,                    XK_z,            spawn,          {.v = <++> } },
 { MODKEY,                    XK_x,            togglescratch,  {.ui = 2 } },
+{ MODKEY,                    XK_c,            spawn,          {.v = calcmd} },
 { MODKEY|ShiftMask,          XK_c,            killclient,     {0} },
 //{ MODKEY,                    XK_v,            spawn,          {.v = <++> } },
 { MODKEY,                    XK_b,            togglebar,      {0} },
 //{ MODKEY|ShiftMask,          XK_b,            seticonset,     {.i = 1 } },
-//{ MODKEY,                    XK_n,            spawn,          {.v = <++> } },
+{ MODKEY,                    XK_n,            spawn,          {.v = diarycmd } },
 //{ MODKEY,                    XK_m,            setlayout,      {.v = &layouts[6]} },
 { MODKEY,                    XK_comma,        focusmon,       {.i = -1 } },
 { MODKEY|ShiftMask,          XK_comma,        tagmon,         {.i = -1 } },
