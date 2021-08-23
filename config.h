@@ -151,7 +151,7 @@ TAGKEYS(                     XK_9,                      8)
 { MODKEY,                    XK_y,            togglescratch,  {.ui = 0 } },
 { MODKEY,                    XK_u,            togglescratch,  {.ui = 1 } },
 { MODKEY,                    XK_i,            incnmaster,     {.i = +1 } },
-//{ MODKEY,                    XK_o,            spawn,          {.v = <++> } },
+{ MODKEY,                    XK_o,            spawn,          {.v = launchmenu } },
 //{ MODKEY,                    XK_p,            spawn,          {.v = dmenucmd } },
 //{ MODKEY,                    XK_bracketleft,  spawn,          SHCMD("<++>") },
 //{ MODKEY,                    XK_bracketright, spawn,          SHCMD("<++>") },

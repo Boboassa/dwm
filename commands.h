@@ -18,9 +18,9 @@ static const char *dmenucmd[] = {
 
 static const char *termcmd[]   = { TERMINAL, NULL };
 static const char *editorcmd[] = { TERMINAL, "-e", "editor",  NULL };
-static const char *wikicmd[]   = { TERMINAL, "-e", "vim", "-c VimwikiIndex",  NULL };
-static const char *diarycmd[]  = { TERMINAL, "-c float", "-g 85x30", "-e vwdiary", NULL };
-static const char *calcmd[]    = { TERMINAL, "-c float", "-g 85x30", "-e calcurse", NULL };
+static const char *wikicmd[]   = { TERMINAL, "-e", "vim", "-c", "VimwikiIndex",  NULL };
+static const char *diarycmd[]  = { TERMINAL, "-c", "float", "-g", "85x30", "-e", "vwdiary", NULL };
+static const char *calcmd[]    = { TERMINAL, "-c", "float", "-g", "85x30", "-e", "calcurse", NULL };
 
 static const char *browsercmd[] = { BROWSER, NULL };
 
@@ -32,4 +32,4 @@ static const char *backlightup[] =    { "backlight", "-i", NULL };
 static const char *backlightdown[] =  { "backlight", "-d", NULL };
 //static const char *backlightreset[] = { "backlight", "-r", NULL };
 
-//static const char *launchmenu[] =     { "fzfmenu", NULL };
+static const char *launchmenu[] =     { "launch", "-o", NULL };
