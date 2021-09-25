@@ -24,14 +24,14 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "sp-term", "-g", "25x10", NULL };
-const char *spcmd2[] = {"st", "-n", "sp-pass", "-g", "90x25", NULL };
-const char *spcmd3[] = {"mpv", NULL };
+const char *spcmd1[] = {"st", "-n", "sp-term", "-g", "27x10", NULL };
+const char *spcmd2[] = {"st", "-n", "sp-pass", "-g", "65x20", NULL };
+const char *spcmd3[] = {"st", "-n", "sp-pass", "-g", "90x25", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"sp-term",      spcmd1},
-	{"sp-pass",      spcmd2},
-	{"mpv",       spcmd3},
+	{"tiny-term",      spcmd1},
+	{"small-term",      spcmd2},
+	{"medium-temr",       spcmd3},
 };
 
 
@@ -50,14 +50,15 @@ static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
-     * class          instance       title   tags mask   switchtotag iscentered isfloating  monitor */
+     * class          instance       title   tags mask   switchtag   iscentered isfloating  monitor */
     { "float",        NULL,          NULL,   0,          0,          1,         1,          -1 },
-	{ "Zathura",      NULL,          NULL,   1 << 2,     0,          0,         0,          -1 },
-	{ "qutebrowser",  NULL,          NULL,   1 << 3,     0,          0,         0,          -1 },
-	{ "discord",      NULL,          NULL,   1 << 7,     0,          0,         0,          -1 },
-	{ NULL,		      "sp-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
-	{ NULL,		      "sp-pass",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
-	{ NULL,		      "mpv",         NULL,   SPTAG(2),   0,          1,         1,          -1 },
+	{ "Zathura",      NULL,          NULL,   1 << 2,     4,          0,         0,          -1 },
+	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
+	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
+	{ "mgba",         NULL,          NULL,   1 << 6,     4,          1,         1,          -1 },
+	{ NULL,		      "tiny-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
+	{ NULL,		      "small-term",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
+	{ NULL,		      "medium-term", NULL,   SPTAG(2),   0,          1,         1,          -1 },
 };
 
 /* layout(s) */
