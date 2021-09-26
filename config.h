@@ -24,14 +24,14 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "sp-term", "-g", "27x10", NULL };
-const char *spcmd2[] = {"st", "-n", "sp-pass", "-g", "65x20", NULL };
-const char *spcmd3[] = {"st", "-n", "sp-pass", "-g", "90x25", NULL };
+const char *spcmd1[] = {"st", "-n", "tiny-term", "-g", "27x10", NULL };
+const char *spcmd2[] = {"st", "-n", "small-term", "-g", "65x20", NULL };
+const char *spcmd3[] = {"st", "-n", "medium-term", "-g", "90x25", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"tiny-term",      spcmd1},
 	{"small-term",      spcmd2},
-	{"medium-temr",       spcmd3},
+	{"medium-term",       spcmd3},
 };
 
 
@@ -170,7 +170,7 @@ TAGKEYS(                     XK_9,                      8)
 { MODKEY,                    XK_l,            setmfact,       {.f = +0.05} },
 //{ MODKEY,                    XK_semicolon,    spawn,          {.v = <++> } },
 //{ MODKEY,                    XK_apostrophe,   spawn,          {.v = <++> } },
-{ MODKEY,                    XK_Return,       spawn,            {.v = termcmd } },
+//{ MODKEY,                    XK_Return,       spawn,          {.v = termcmd } },
 { MODKEY|ShiftMask,          XK_Return,       spawn,          {.v = termcmd } },
 { MODKEY,                    XK_Return,       zoom,           {0} },
 
