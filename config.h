@@ -40,9 +40,9 @@ static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons,
 static char *tagicons[][NUMTAGS] = {
 	[IconsDefault]        = { "" },
     /* name                    term.       docs        note        globe       circle      circle      circle      message     music    */
-	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
-	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
-	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uF10C ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uE370 ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uE370 ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uE370 ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
     [IconsNumbers]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 };
 
@@ -56,6 +56,7 @@ static const Rule rules[] = {
 	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
 	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
 	{ "mgba",         NULL,          NULL,   1 << 6,     4,          1,         1,          -1 },
+	{ "Anki",         NULL,          NULL,   1 << 4,     4,          0,         1,          -1 },
 	{ NULL,		      "tiny-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
 	{ NULL,		      "small-term",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
 	{ NULL,		      "medium-term", NULL,   SPTAG(2),   0,          1,         1,          -1 },
