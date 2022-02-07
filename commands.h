@@ -29,6 +29,10 @@ static const char *volup[] =          { "volume", "-i", NULL };
 static const char *voldown[] =        { "volume", "-d", NULL };
 static const char *togglemute[] =     { "volume", "-m", NULL };
 
+static const char *dunstdel[] =       { "dunstctl", "close", NULL };
+static const char *dunstdelall[] =    { "dunstctl", "close-all", NULL };
+static const char *dunstmute[] =      { "dunstctl", "set-paused", "toggle", NULL };
+
 static const char *backlightup[] =    { "backlight", "-i", NULL };
 static const char *backlightdown[] =  { "backlight", "-d", NULL };
 //static const char *backlightreset[] = { "backlight", "-r", NULL };
