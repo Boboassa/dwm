@@ -10,12 +10,12 @@ static const unsigned int gappov    = 15;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 15;       /* vertical gap above the bar */
-static const int sidepad            = 15;       /* horizontal gap on the left and right of the bar */
+static const int vertpad            = 0;       /* vertical gap above the bar */
+static const int sidepad            = 0;       /* horizontal gap on the left and right of the bar */
 static const int horizpadbar        = 15;       /* horizontal internal padding for statusbar */
 static const int vertpadbar         = 10;       /* vertical internal padding for statusbar */
-static const char *fonts[]          = { "Hurmit Nerd Font:style=medium:pixelsize=16:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Hurmit Nerd Font:style=medium:pixelsize=16";
+static const char *fonts[]          = { "Iosevka Term:style=medium:pixelsize=15:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Iosevka Term:style=medium:pixelsize=16";
 
 // color theme, included from ~/.cache/themes/ in config.mk
 #include "dwm-color.h"
