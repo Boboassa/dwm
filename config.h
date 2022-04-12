@@ -40,9 +40,9 @@ static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons,
 static char *tagicons[][NUMTAGS] = {
 	[IconsDefault]        = { "" },
     /* name                    term.       docs        note        globe       circle      circle      circle      message     music    */
-	[IconsVacant]         = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uE370 ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
-	[IconsOccupied]       = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uE370 ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
-	[IconsSubscript]      = { "\uE795 ₁", "\uF899 ₂", "\uF89D ₃", "\uF0AC ₄", "\uE370 ₅", "\uF10C ₆", "\uF10C ₇", "\uF869 ₈", "\uF886 ₉" },
+	[IconsVacant]         = { "TRM",      "DOX",      "NTE",      "BRW",      "X-5",      "X-6",      "X-7",      "MSG",      "MSC" },
+	[IconsOccupied]       = { "TRM",      "DOX",      "NTE",      "BRW",      "X-5",      "X-6",      "X-7",      "MSG",      "MSC" },
+	[IconsSubscript]      = { "TRM",      "DOX",      "NTE",      "BRW",      "X-5",      "X-6",      "X-7",      "MSG",      "MSC" },
     [IconsNumbers]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 };
 
