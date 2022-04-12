@@ -56,7 +56,7 @@ static const Rule rules[] = {
 	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
 	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
 	{ "mgba",         NULL,          NULL,   1 << 6,     4,          1,         1,          -1 },
-	{ "Anki",         NULL,          NULL,   1 << 4,     4,          0,         1,          -1 },
+	{ "Anki",         NULL,          NULL,   1 << 4,     4,          0,         0,          -1 },
 	{ NULL,		      "tiny-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
 	{ NULL,		      "small-term",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
 	{ NULL,		      "medium-term", NULL,   SPTAG(2),   0,          1,         1,          -1 },
