@@ -183,9 +183,9 @@ TAGKEYS(                     XK_9,                      8)
 //{ MODKEY,                    XK_v,            spawn,          {.v = <++> } },
 { MODKEY,                    XK_b,            togglebar,      {0} },
 //{ MODKEY|ShiftMask,          XK_b,            seticonset,     {.i = 1 } },
-{ MODKEY,                    XK_n,            spawn,          {.v = diaryedit } },
-{ MODKEY|ShiftMask,          XK_n,            spawn,          {.v = diaryview } },
-//{ MODKEY,                    XK_m,            setlayout,      {.v = &layouts[6]} },
+{ MODKEY,                    XK_n,            spawn,          {.v = wikifzfedit } },
+{ MODKEY|ShiftMask,          XK_n,            spawn,          {.v = wikifzfview } },
+{ MODKEY,                    XK_m,            spawn,          {.v = wikifzfapp } },
 { MODKEY,                    XK_comma,        focusmon,       {.i = -1 } },
 { MODKEY|ShiftMask,          XK_comma,        tagmon,         {.i = -1 } },
 { MODKEY,                    XK_period,       focusmon,       {.i = +1 } },
@@ -214,8 +214,8 @@ TAGKEYS(                     XK_9,                      8)
 { 0,            XF86XK_AudioMute,             spawn,    {.v = togglemute } },
 { 0,            XF86XK_AudioLowerVolume,      spawn,    {.v = voldown } },
 { 0,            XF86XK_AudioRaiseVolume,      spawn,    {.v = volup } },
-{ 0,            XF86XK_MonBrightnessUp,       spawn,    {.v = backlightup } },
-{ 0,            XF86XK_MonBrightnessDown,     spawn,    {.v = backlightdown } },
+{ 0,            XF86XK_MonBrightnessUp,       spawn,    {.v = blup } },
+{ 0,            XF86XK_MonBrightnessDown,     spawn,    {.v = bldown } },
 };
 
 /* button definitions */
