@@ -39,10 +39,9 @@ static Sp scratchpads[] = {
 static const char *tags[NUMTAGS] = { NULL };  /* left for compatibility reasons, i.e. code that checks LENGTH(tags) */
 static char *tagicons[][NUMTAGS] = {
 	[IconsDefault]        = { "" },
-    /* name                    term.       docs        note        globe       circle      circle      circle      message     music    */
-	[IconsVacant]         = { "TRM",      "DOX",      "NTE",      "BRW",      "X-5",      "X-6",      "X-7",      "MSG",      "MSC" },
-	[IconsOccupied]       = { "TRM",      "DOX",      "NTE",      "BRW",      "X-5",      "X-6",      "X-7",      "MSG",      "MSC" },
-	[IconsSubscript]      = { "TRM",      "DOX",      "NTE",      "BRW",      "X-5",      "X-6",      "X-7",      "MSG",      "MSC" },
+	[IconsVacant]         = { "1 TRM",    "2 DOX",    "3 NTE",    "4 BRW",    "5 CAL",    "6",        "7",        "8 MSG",    "9 MSC" },
+	[IconsOccupied]       = { "1 TRM",    "2 DOX",    "3 NTE",    "4 BRW",    "5 CAL",    "6",        "7",        "8 MSG",    "9 MSC" },
+	[IconsSubscript]      = { "1 TRM",    "2 DOX",    "3 NTE",    "4 BRW",    "5 CAL",    "6",        "7",        "8 MSG",    "9 MSC" },
     [IconsNumbers]        = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 };
 
@@ -55,7 +54,7 @@ static const Rule rules[] = {
 	{ "Zathura",      NULL,          NULL,   1 << 2,     4,          0,         0,          -1 },
 	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
 	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
-	{ "mgba",         NULL,          NULL,   1 << 6,     4,          1,         1,          -1 },
+	{ "calendar",     NULL,          NULL,   1 << 4,     4,          0,         0,          -1 },
 	{ "Anki",         NULL,          NULL,   1 << 4,     4,          0,         0,          -1 },
 	{ NULL,		      "tiny-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
 	{ NULL,		      "small-term",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
@@ -137,14 +136,14 @@ TAGKEYS(                     XK_6,                      5)
 TAGKEYS(                     XK_7,                      6)
 TAGKEYS(                     XK_8,                      7)
 TAGKEYS(                     XK_9,                      8)
-{ MODKEY,                    XK_0,            view,            {.ui = ~0 } },
-{ MODKEY|ShiftMask,          XK_0,            tag,             {.ui = ~0 } },
-{ MODKEY,                    XK_minus,        spawn,           {.v = 0 } },
-{ MODKEY,                    XK_equal,        spawn,           {.v = 0 } },
-{ MODKEY,                    XK_BackSpace,    spawn,           {.v = 0 } },
+{ MODKEY,                    XK_0,            view,           {.ui = ~0 } },
+{ MODKEY|ShiftMask,          XK_0,            tag,            {.ui = ~0 } },
+{ MODKEY,                    XK_minus,        spawn,          {.v = 0 } },
+{ MODKEY,                    XK_equal,        spawn,          {.v = 0 } },
+{ MODKEY,                    XK_BackSpace,    spawn,          {.v = 0 } },
 
 { MODKEY,                    XK_Tab,          view,           {0} },
-{ MODKEY,                    XK_q,            spawn,          {0} },
+{ MODKEY,                    XK_q,            spawn,          {.v = lock} },
 { MODKEY|ShiftMask,          XK_q,            quit,           {0} },
 { MODKEY,                    XK_w,            spawn,          {.v = wikicmd} },
 //{ MODKEY,                    XK_e,            spawn,          {.v = <++> } },
@@ -155,9 +154,9 @@ TAGKEYS(                     XK_9,                      8)
 //{ MODKEY,                    XK_i,            incnmaster,     {.i = +1 } },
 { MODKEY,                    XK_o,            spawn,          {.v = launchmenu } },
 //{ MODKEY,                    XK_p,            spawn,          {.v = dmenucmd } },
-{ MODKEY,                    XK_bracketleft,  incnmaster,      {.i = -1 } },
-{ MODKEY,                    XK_bracketright, incnmaster,      {.i = +1 } },
-//{ MODKEY,                    XK_backslash,    spawn,          SHCMD("<++>") },
+{ MODKEY,                    XK_bracketleft,  incnmaster,     {.i = -1 } },
+{ MODKEY,                    XK_bracketright, incnmaster,     {.i = +1 } },
+//{ MODKEY,                    XK_backslash,    spawn,         SHCMD("<++>") },
 
 { MODKEY,                    XK_a,            cyclelayout,    {.i = +1 } },
 //{ MODKEY|ShiftMask,          XK_a,            seticonset,     {.i = 0 } },
@@ -211,6 +210,7 @@ TAGKEYS(                     XK_9,                      8)
 { MODKEY|Mod4Mask,           XK_0,            togglegaps,     {0} },
 { MODKEY|Mod4Mask|ShiftMask, XK_0,            defaultgaps,    {0} },
 
+/* media keys */
 { 0,            XF86XK_AudioMute,             spawn,    {.v = togglemute } },
 { 0,            XF86XK_AudioLowerVolume,      spawn,    {.v = voldown } },
 { 0,            XF86XK_AudioRaiseVolume,      spawn,    {.v = volup } },

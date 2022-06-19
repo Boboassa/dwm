@@ -19,7 +19,7 @@ static const char *dmenucmd[] = {
 // General stuff
 static const char *termcmd[]     = { TERMINAL, NULL };
 //static const char *editorcmd[]   = { TERMINAL, "-e", "editor",  NULL };
-static const char *calcmd[]      = { TERMINAL, "-c", "float", "-g", "85x30", "-e", "calcurse", NULL };
+static const char *calcmd[]      = { TERMINAL, "-c", "calendar", "-g", "85x30", "-e", "calcure", NULL };
 
 // Wiki interaction
 static const char *wikicmd[]     = { TERMINAL, "-e", "vim", "-c", "WikiIndex",  NULL };
@@ -33,18 +33,21 @@ static const char *wikifzfview[] = { TERMINAL, "-c", "float", "-g", "85x30", "-e
 static const char *browsercmd[]  = { BROWSER, NULL };
 
 // Volume control
-static const char *volup[]       =          { "volume", "-i", NULL };
-static const char *voldown[]     =        { "volume", "-d", NULL };
-static const char *togglemute[]  =     { "volume", "-m", NULL };
+static const char *volup[]       = { "volume", "-i", NULL };
+static const char *voldown[]     = { "volume", "-d", NULL };
+static const char *togglemute[]  = { "volume", "-m", NULL };
 
 // Notification dismiss
-static const char *dunstdel[]    =       { "dunstctl", "close", NULL };
-static const char *dunstdelall[] =    { "dunstctl", "close-all", NULL };
-static const char *dunstmute[]   =      { "dunstctl", "set-paused", "toggle", NULL };
+static const char *dunstdel[]    = { "dunstctl", "close", NULL };
+static const char *dunstdelall[] = { "dunstctl", "close-all", NULL };
+static const char *dunstmute[]   = { "dunstctl", "set-paused", "toggle", NULL };
 
 // Backlight control
-static const char *blup[] =    { "backlight", "-i", NULL };
-static const char *bldown[] =  { "backlight", "-d", NULL };
+static const char *blup[] =   { "backlight", "-i", NULL };
+static const char *bldown[] = { "backlight", "-d", NULL };
 //static const char *backlightreset[] = { "backlight", "-r", NULL };
 
 static const char *launchmenu[] =     { "launch", "-o", NULL };
+
+// lock screen
+static const char *lock[]    = { "slock", NULL };
