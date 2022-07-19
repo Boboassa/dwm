@@ -30,8 +30,8 @@ const char *spcmd3[] = {"st", "-n", "medium-term", "-g", "90x25", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"tiny-term",      spcmd1},
-	{"small-term",      spcmd2},
-	{"medium-term",       spcmd3},
+	{"small-term",     spcmd2},
+	{"medium-term",    spcmd3},
 };
 
 
@@ -51,18 +51,18 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
      * class          instance       title   tags mask   switchtag   iscentered isfloating  monitor */
     { "float",        NULL,          NULL,   0,          0,          1,         1,          -1 },
-	{ "Zathura",      NULL,          NULL,   1 << 2,     4,          0,         0,          -1 },
+	{ "Zathura",      NULL,          NULL,   1 << 2,     1,          0,         0,          -1 },
 	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
 	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
-	{ "calendar",     NULL,          NULL,   1 << 4,     4,          0,         0,          -1 },
-	{ "Anki",         NULL,          NULL,   1 << 4,     4,          0,         0,          -1 },
-	{ NULL,		      "tiny-term",	 NULL,   SPTAG(0),   0,          1,         1,          -1 },
-	{ NULL,		      "small-term",	 NULL,   SPTAG(1),   0,          1,         1,          -1 },
-	{ NULL,		      "medium-term", NULL,   SPTAG(2),   0,          1,         1,          -1 },
+	{ "calendar",     NULL,          NULL,   1 << 4,     3,          0,         0,          -1 },
+	{ "Anki",         NULL,          NULL,   1 << 4,     1,          0,         0,          -1 },
+	{ NULL,           "tiny-term",   NULL,   SPTAG(0),   0,          1,         1,          -1 },
+	{ NULL,           "small-term",  NULL,   SPTAG(1),   0,          1,         1,          -1 },
+	{ NULL,           "medium-term", NULL,   SPTAG(2),   0,          1,         1,          -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5;  /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
@@ -148,7 +148,7 @@ TAGKEYS(                     XK_9,                      8)
 { MODKEY,                    XK_w,            spawn,          {.v = wikicmd} },
 //{ MODKEY,                    XK_e,            spawn,          {.v = <++> } },
 //{ MODKEY,                    XK_r,            setlayout,      {.v = &layouts[5]} },
-{ MODKEY,                    XK_t,            setlayout,      {.v = &layouts[0]} },
+{ MODKEY,                    XK_t,            spawn,          {.v = calcmd} },
 { MODKEY,                    XK_y,            togglescratch,  {.ui = 0 } },
 { MODKEY,                    XK_u,            togglescratch,  {.ui = 1 } },
 //{ MODKEY,                    XK_i,            incnmaster,     {.i = +1 } },
@@ -177,14 +177,14 @@ TAGKEYS(                     XK_9,                      8)
 
 //{ MODKEY,                    XK_z,            spawn,          {.v = <++> } },
 { MODKEY,                    XK_x,            togglescratch,  {.ui = 2 } },
-{ MODKEY,                    XK_c,            spawn,          {.v = calcmd} },
+//{ MODKEY,                    XK_c,            spawn,          {.v = calcmd} },
 { MODKEY|ShiftMask,          XK_c,            killclient,     {0} },
 //{ MODKEY,                    XK_v,            spawn,          {.v = <++> } },
 { MODKEY,                    XK_b,            togglebar,      {0} },
 //{ MODKEY|ShiftMask,          XK_b,            seticonset,     {.i = 1 } },
 { MODKEY,                    XK_n,            spawn,          {.v = wikifzfedit } },
 { MODKEY|ShiftMask,          XK_n,            spawn,          {.v = wikifzfview } },
-{ MODKEY,                    XK_m,            spawn,          {.v = wikifzfapp } },
+{ MODKEY,                    XK_m,            spawn,          {.v = wikirnd } },
 { MODKEY,                    XK_comma,        focusmon,       {.i = -1 } },
 { MODKEY|ShiftMask,          XK_comma,        tagmon,         {.i = -1 } },
 { MODKEY,                    XK_period,       focusmon,       {.i = +1 } },

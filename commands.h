@@ -24,10 +24,10 @@ static const char *calcmd[]      = { TERMINAL, "-c", "calendar", "-g", "85x30", 
 // Wiki interaction
 static const char *wikicmd[]     = { TERMINAL, "-e", "vim", "-c", "WikiIndex",  NULL };
 static const char *wikifzfedit[] = { TERMINAL, "-c", "float", "-g", "85x30", "-e", "fzfwiki", NULL };
-// Append
-static const char *wikifzfapp[]  = { TERMINAL, "-c", "float", "-g", "85x30", "-e", "fzfwiki", "-a", NULL };
 // Readonly
 static const char *wikifzfview[] = { TERMINAL, "-c", "float", "-g", "85x30", "-e", "fzfwiki", "-v", NULL };
+// Random page
+static const char *wikirnd[]    = { TERMINAL, "-c", "float", "-g", "85x30", "-e", "idea", NULL };
 
 // Program launching
 static const char *browsercmd[]  = { BROWSER, NULL };
