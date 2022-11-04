@@ -52,6 +52,7 @@ static const Rule rules[] = {
      * class          instance       title   tags mask   switchtag   iscentered isfloating  monitor */
     { "float",        NULL,          NULL,   0,          0,          1,         1,          -1 },
 	{ "Zathura",      NULL,          NULL,   1 << 2,     1,          0,         0,          -1 },
+	{ "sent",         NULL,          NULL,   1 << 8,     3,          0,         0,          -1 },
 	{ "qutebrowser",  NULL,          NULL,   1 << 3,     1,          0,         0,          -1 },
 	{ "discord",      NULL,          NULL,   1 << 7,     1,          0,         0,          -1 },
 	{ "calendar",     NULL,          NULL,   1 << 4,     3,          0,         0,          -1 },
