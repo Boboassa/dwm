@@ -47,7 +47,9 @@ static const char *blup[] =   { "backlight", "-i", NULL };
 static const char *bldown[] = { "backlight", "-d", NULL };
 //static const char *backlightreset[] = { "backlight", "-r", NULL };
 
-static const char *launchmenu[] =     { "launch", "-o", NULL };
+static const char *launchmenu[] =     { "launch", "--program", NULL };
+static const char *launchpdf[] =      { "launch", "--pdf", NULL };
+static const char *launchbookmark[] = { "launch", "--bookmark", NULL };
 
 // lock screen
 static const char *lock[]    = { "slock", NULL };
